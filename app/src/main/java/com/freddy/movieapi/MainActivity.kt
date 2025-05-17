@@ -22,8 +22,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Use your API key here
-                    val apiKey = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzI1ODVjZmRlYzYyNzZkM2Y2OWI4ZDVhNzUzZDY5MSIsIm5iZiI6MTU3OTE1NTQ0MC40OTQwMDAyLCJzdWIiOiI1ZTFmZmZmMDAxMDJjOTAwMTYzYjhhOWIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.MscjSs_sPx7OCo2iR1C8TDzsn7kOYUbQWMy1lFB3KSg"
-                    PopularMoviesScreen(apiKey = apiKey)
+                    PopularMoviesScreen()
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.freddy.movieapi.data.di
 
+import com.freddy.movieapi.data.remote.AuthInterceptor
 import com.freddy.movieapi.data.remote.MovieApiService
 import com.freddy.movieapi.data.repository.MovieRepositoryImpl
 import com.freddy.movieapi.domain.repository.MovieRepository
@@ -29,9 +30,13 @@ object NetworkModule {
 
     @Provides
     @Singleton  // Keep singleton for OkHttpClient as it's expensive to create
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        authInterceptor: AuthInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(authInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)

@@ -19,10 +19,10 @@ class MovieViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<MovieUiState>(MovieUiState.Loading)
     val uiState: StateFlow<MovieUiState> = _uiState.asStateFlow()
 
-    fun getPopularMovies(apiKey: String) {
+    fun getPopularMovies() {
         viewModelScope.launch {
             _uiState.value = MovieUiState.Loading
-            getPopularMoviesUseCase(apiKey).fold(
+            getPopularMoviesUseCase().fold(
                 onSuccess = { movies ->
                     _uiState.value = MovieUiState.Success(movies)
                 },

@@ -10,9 +10,9 @@ class MovieRepositoryImpl @Inject constructor(
     private val apiService: MovieApiService
 ) : MovieRepository {
 
-    override suspend fun getPopularMovies(apiKey: String): Result<List<MovieDomain>> {
+    override suspend fun getPopularMovies(): Result<List<MovieDomain>> {
         return try {
-            val response = apiService.getPopularMovies(apiKey)
+            val response = apiService.getPopularMovies()
             val movies = response.results.map { it.toDomain() }
             Result.success(movies)
         } catch (e: Exception) {
@@ -20,9 +20,9 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getTopRatedMovies(apiKey: String): Result<List<MovieDomain>> {
+    override suspend fun getTopRatedMovies(): Result<List<MovieDomain>> {
         return try {
-            val response = apiService.getTopRatedMovies(apiKey)
+            val response = apiService.getTopRatedMovies()
             val movies = response.results.map { it.toDomain() }
             Result.success(movies)
         } catch (e: Exception) {

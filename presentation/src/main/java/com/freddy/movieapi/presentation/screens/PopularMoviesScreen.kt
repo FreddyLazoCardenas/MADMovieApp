@@ -32,13 +32,12 @@ import com.freddy.movieapi.presentation.viewmodel.MovieViewModel
 
 @Composable
 fun PopularMoviesScreen(
-    apiKey: String,
     viewModel: MovieViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(key1 = true) {
-        viewModel.getPopularMovies(apiKey)
+        viewModel.getPopularMovies()
     }
 
     when (val state = uiState) {

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetPopularMoviesUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
-    suspend operator fun invoke(apiKey: String): Result<List<MovieDomain>> {
-        return repository.getPopularMovies(apiKey)
+    suspend operator fun invoke(): Result<List<MovieDomain>> {
+        return repository.getPopularMovies()
     }
 }
