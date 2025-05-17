@@ -1,0 +1,70 @@
+# Android Studio/Gradle
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.cxx
+*.hprof
+
+# Kotlin
+*.kts
+*.kt
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google services
+google-services.json
+
+# Local configuration files (if any)
+local.properties
+
+# Environment files
+.env
+
+# Crashlytics
+com_crashlytics_export_strings.xml
+
+# Misc
+*.log
+*.lock
+*.tmp
+*.swp
+*~
+*.bak
+
+# IntelliJ
+.idea/
+
+# Mac
+.DS_Store
+
+# Build directory
+build/
+
+# Generated files
+generated/
+
+# Captures
+captures/
+
+# Hilt
+app/build/generated/hilt/
+data/build/generated/hilt/
+domain/build/generated/hilt/
+presentation/build/generated/hilt/
+
+# Navigation
+app/build/generated/source/navigation-args/
+data/build/generated/source/navigation-args/
+domain/build/generated/source/navigation-args/
+presentation/build/generated/source/navigation-args/
