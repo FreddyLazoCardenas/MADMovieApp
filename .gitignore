@@ -14,10 +14,6 @@
 .cxx
 *.hprof
 
-# Kotlin
-*.kts
-*.kt
-
 # Keystore files
 *.jks
 *.keystore
