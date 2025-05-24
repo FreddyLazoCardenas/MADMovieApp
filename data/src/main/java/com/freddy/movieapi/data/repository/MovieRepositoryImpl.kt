@@ -29,4 +29,14 @@ class MovieRepositoryImpl @Inject constructor(
             Result.failure(e)
         }
     }
+
+    override suspend fun getMovieDetail(movieId: Int): Result<MovieDomain> {
+        return try {
+            val response = apiService.getMovieDetail(movieId)
+            val movie = response.toDomain()
+            Result.success(movie)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.freddy.movieapi.presentation.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,6 +33,7 @@ import com.freddy.movieapi.presentation.viewmodel.MovieViewModel
 
 @Composable
 fun PopularMoviesScreen(
+    onMovieClick: (Int) -> Unit = {},
     viewModel: MovieViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -47,7 +49,7 @@ fun PopularMoviesScreen(
             }
         }
         is MovieUiState.Success -> {
-            MovieGrid(movies = state.movies)
+            MovieGrid(movies = state.movies, onMovieClick = onMovieClick)
         }
         is MovieUiState.Error -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -58,23 +60,24 @@ fun PopularMoviesScreen(
 }
 
 @Composable
-fun MovieGrid(movies: List<MovieDomain>) {
+fun MovieGrid(movies: List<MovieDomain>, onMovieClick: (Int) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(movies) { movie ->
-            MovieCard(movie = movie)
+            MovieCard(movie = movie, onMovieClick = onMovieClick)
         }
     }
 }
 
 @Composable
-fun MovieCard(movie: MovieDomain) {
+fun MovieCard(movie: MovieDomain, onMovieClick: (Int) -> Unit) {
     Card(
         modifier = Modifier
             .padding(4.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onMovieClick(movie.id) },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column {
